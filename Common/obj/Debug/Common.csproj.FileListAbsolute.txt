@@ -1,0 +1,5 @@
+G:\ADownLoad\WebOto\Common\bin\Debug\Common.dll
+G:\ADownLoad\WebOto\Common\bin\Debug\Common.pdb
+G:\ADownLoad\WebOto\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+G:\ADownLoad\WebOto\Common\obj\Debug\Common.dll
+G:\ADownLoad\WebOto\Common\obj\Debug\Common.pdb
