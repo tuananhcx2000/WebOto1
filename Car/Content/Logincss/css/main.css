@@ -400,7 +400,11 @@ iframe {
 .validate-input {
   position: relative;
 }
-
+ul, li {
+    margin: 0px;
+    list-style-type: none;
+    text-align: center;
+}
 .alert-validate::before {
   content: attr(data-validate);
   position: absolute;

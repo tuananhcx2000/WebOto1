@@ -6,7 +6,7 @@
 }
 @{ 
     IEnumerable<SanPham> listNewCar = (IEnumerable<SanPham>)ViewBag.ListNewCar;
-    // IEnumerable<SanPham> listNewCar = ViewBag.ListNewCar as IEnumerable<SanPham>;
+    IEnumerable<Blog> listBlog = (IEnumerable<Blog>)ViewBag.ListBlog;
 }
 @*banner*@
 <div class="banner header-text">
@@ -91,39 +91,22 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <a href="#" class="services-item-image"><img src="~/Content/assets/images/blog-1-370x270.jpg" class="img-fluid" alt=""></a>
+            @foreach (var bg in listBlog)
+            {
+                var url = "/blog/" + bg.metaTiltle + "-" + bg.MaBlog;
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item">
+                        <a href="@url" class="services-item-image"><img src="~/Content/assets/images/@bg.HinhAnh" class="img-fluid" alt=""></a>
 
-                    <div class="down-content">
-                        <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
+                        <div class="down-content">
+                            <h4><a href="@url">@bg.TieuDe</a></h4>
 
-                        <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
+                            <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; @bg.NgayCapNhat &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <a href="#" class="services-item-image"><img src="~/Content/assets/images/blog-2-370x270.jpg" class="img-fluid" alt=""></a>
+            }
 
-                    <div class="down-content">
-                        <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
-
-                        <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <a href="#" class="services-item-image"><img src="~/Content/assets/images/blog-3-370x270.jpg" class="img-fluid" alt=""></a>
-
-                    <div class="down-content">
-                        <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
-
-                        <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

@@ -40,6 +40,7 @@
                             Admin Login
                         </span>
 
+
                         <div class="wrap-input100 validate-input" data-validate="User is required" style="position:relative;left:180px">
                             <input class="input100" type="text" name="txtTaiKhoan" placeholder="User" style="width:50%">
                             <span class="focus-input100"></span>
@@ -48,21 +49,20 @@
                             </span>
                         </div>
 
-                        <div class="wrap-input100 validate-input" data-validate="Password is required"  style="position:relative;left:180px">
+                        <div class="wrap-input100 validate-input" data-validate="Password is required" style="position:relative;left:180px">
                             <input class="input100" type="password" name="txtMatKhau" placeholder="Password" style="width:50%">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
                             </span>
                         </div>
-
-                        <div class="container-login100-form-btn"  style="width: 50%;position: relative; left: 180px">
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger wrap-input100 validate-input " })
+                        <div class="container-login100-form-btn" style="width: 50%;position: relative; left: 180px">
                             <button class="login100-form-btn">
                                 Login
                             </button>
                         </div>
-                       
-                        
+
                     </form>
                 </div>
             </div>

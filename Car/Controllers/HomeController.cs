@@ -16,8 +16,10 @@ namespace Car.Controllers
             //TẠO VIEWBAG ĐỂ LẤY LIST SẢN PHẨM
             //lIST XE MỚI NHẤT
             var lstNewCar = _db.SanPhams.Where(n => n.TrangThai == true).ToList();
+            var lstBlog = _db.Blogs.OrderBy(x => x.NgayCapNhat).Take(3).ToList();
             //gán vào viewbag
             ViewBag.ListNewCar = lstNewCar;
+            ViewBag.ListBlog = lstBlog;
             return View();
             
         }

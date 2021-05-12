@@ -24,21 +24,36 @@ namespace Car.Controllers
         [HttpPost]
         public ActionResult Login (string txtTaiKhoan, string txtMatKhau)
         {
-            Admin tv = db.Admins.SingleOrDefault(n => n.User == txtTaiKhoan && n.PassWord == txtMatKhau);
+            Admin tv = db.Admins.SingleOrDefault(n => n.User == txtTaiKhoan);
             if (tv != null)
             {
-                //Truy cập lấy ra tất cả quyền của thành viên đó
-                IEnumerable<ThanhVien_Quyen> lstQuyen = db.ThanhVien_Quyen.Where(n => n.MaLoaiTV == tv.MaLoaiTV);
-                string Quyen = "";
-                foreach (var item in lstQuyen)
+                if(tv.PassWord == txtMatKhau)
                 {
-                    Quyen += item.Quyen.TenQuyen + ","; //Lấy quyền trong bảng chi tiết quyền và loại thành viên
+                    //Truy cập lấy ra tất cả quyền của thành viên đó
+                    IEnumerable<ThanhVien_Quyen> lstQuyen = db.ThanhVien_Quyen.Where(n => n.MaLoaiTV == tv.MaLoaiTV);
+                    string Quyen = "";
+                    foreach (var item in lstQuyen)
+                    {
+                        Quyen += item.Quyen.TenQuyen + ","; //Lấy quyền trong bảng chi tiết quyền và loại thành viên
 
-}
-                Quyen = Quyen.Substring(0, Quyen.Length - 1); //Cắt đi dấu , cuối cùng (Chuỗi sau khi cắt: 
+                    }
+                    Quyen = Quyen.Substring(0, Quyen.Length - 1); //Cắt đi dấu , cuối cùng (Chuỗi sau khi cắt: 
 
-               PhanQuyen(txtTaiKhoan, Quyen); //Xử lý phương thức phân quyền
-                return RedirectToAction("Index", "Admin");
+                    PhanQuyen(txtTaiKhoan, Quyen); //Xử lý phương thức phân quyền
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Mật khẩu không đúng");
+                }
+            }
+            else if(tv == null)
+            {
+                ModelState.AddModelError("", "Tài Khoản không tồn tại");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Đăng nhập không đúng");
             }
             return View();
         }

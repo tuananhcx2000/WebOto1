@@ -1,7 +1,9 @@
 ﻿using Car.Models;
+using Common;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,7 +14,7 @@ namespace Car.Controllers
     {
         private WebOtoEntities db = new WebOtoEntities();
         // GET: Tintuc
-        public ActionResult Index(int ?page)
+        public ActionResult Index(int? page)
         {
             int PageSize = 3;
             int PageNumber = (page ?? 1);
@@ -46,3 +48,4 @@ namespace Car.Controllers
             return View();
         }
     }
+}
